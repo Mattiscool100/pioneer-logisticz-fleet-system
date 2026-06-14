@@ -97,3 +97,89 @@ function updateDashboard() {
 // Load Everything
 displayTrucks();
 updateDashboard();
+// ======================
+// DRIVER MANAGEMENT
+// ======================
+
+let drivers =
+JSON.parse(localStorage.getItem("drivers")) || [];
+
+function addDriver() {
+
+    const name =
+    document.getElementById("driverName");
+
+    const phone =
+    document.getElementById("driverPhone");
+
+    const license =
+    document.getElementById("driverLicense");
+
+    if (!name || !phone || !license) return;
+
+    if (
+        name.value === "" ||
+        phone.value === "" ||
+        license.value === ""
+    ) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    drivers.push({
+        name: name.value,
+        phone: phone.value,
+        license: license.value
+    });
+
+    localStorage.setItem(
+        "drivers",
+        JSON.stringify(drivers)
+    );
+
+    name.value = "";
+    phone.value = "";
+    license.value = "";
+
+    displayDrivers();
+}
+
+function displayDrivers() {
+
+    const table =
+    document.getElementById("driverTable");
+
+    if (!table) return;
+
+    table.innerHTML = "";
+
+    drivers.forEach((driver,index)=>{
+
+        table.innerHTML += `
+        <tr>
+            <td>${driver.name}</td>
+            <td>${driver.phone}</td>
+            <td>${driver.license}</td>
+            <td>
+                <button onclick="deleteDriver(${index})">
+                Delete
+                </button>
+            </td>
+        </tr>
+        `;
+    });
+}
+
+function deleteDriver(index){
+
+    drivers.splice(index,1);
+
+    localStorage.setItem(
+        "drivers",
+        JSON.stringify(drivers)
+    );
+
+    displayDrivers();
+}
+
+displayDrivers();
