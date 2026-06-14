@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trucks - Pioneer Logisticz</title>
+    <title>Truck Fleet Management - Pioneer Logisticz</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,62 +12,92 @@
 <div class="sidebar">
     <h2>Pioneer Logisticz</h2>
 
-    <ul>
-        <li><a href="index.html">🏠 Dashboard</a></li>
-        <li><a href="trucks.html">🚚 Trucks</a></li>
-        <li><a href="drivers.html">👨‍✈️ Drivers</a></li>
-        <li><a href="trips.html">🗺️ Trips</a></li>
-    </ul>
+```
+<ul>
+    <li><a href="index.html">🏠 Dashboard</a></li>
+    <li><a href="trucks.html">🚚 Trucks</a></li>
+    <li><a href="drivers.html">👨‍✈️ Drivers</a></li>
+    <li><a href="trips.html">🗺️ Trips</a></li>
+</ul>
+```
+
 </div>
 
 <div class="main">
 
-    <h1>Truck Fleet Management</h1>
+```
+<h1>🚚 Truck Fleet Management</h1>
 
-    <div class="card" style="margin-top:20px;">
-        <h2>Add New Truck</h2>
-        <br>
+<div class="card" style="margin-top:20px;">
+    <h2>Add New Truck</h2>
+    <br>
 
-        <form onsubmit="event.preventDefault(); addTruck();">
+    <form onsubmit="event.preventDefault(); addTruck();">
 
-            <input id="truckId" type="text" placeholder="Truck ID" style="width:100%;padding:10px;margin-bottom:10px;">
+        <input
+            id="truckId"
+            type="text"
+            placeholder="Truck ID (PL-001)"
+            style="width:100%;padding:12px;margin-bottom:10px;"
+        >
 
-            <input id="plate" type="text" placeholder="License Plate" style="width:100%;padding:10px;margin-bottom:10px;">
+        <input
+            id="plate"
+            type="text"
+            placeholder="License Plate"
+            style="width:100%;padding:12px;margin-bottom:10px;"
+        >
 
-            <input id="model" type="text" placeholder="Truck Model" style="width:100%;padding:10px;margin-bottom:10px;">
+        <input
+            id="model"
+            type="text"
+            placeholder="Truck Model"
+            style="width:100%;padding:12px;margin-bottom:10px;"
+        >
 
-            <select id="status" style="width:100%;padding:10px;margin-bottom:10px;">
-                <option>Available</option>
-                <option>In Transit</option>
-                <option>Maintenance</option>
-            </select>
+        <select
+            id="status"
+            style="width:100%;padding:12px;margin-bottom:10px;"
+        >
+            <option>Available</option>
+            <option>In Transit</option>
+            <option>Maintenance</option>
+        </select>
 
-            <button type="submit" style="padding:10px 20px;">
-                Add Truck
-            </button>
+        <button
+            type="submit"
+            style="padding:12px 20px;cursor:pointer;"
+        >
+            Add Truck
+        </button>
 
-        </form>
-    </div>
+    </form>
+</div>
 
-    <div class="card" style="margin-top:20px;">
+<div class="card" style="margin-top:20px;">
 
-        <h2>Fleet Trucks</h2>
-        <br>
+    <h2>Fleet Trucks</h2>
+    <br>
 
-        <table width="100%">
+    <table width="100%" cellpadding="10">
 
+        <thead>
             <tr>
                 <th align="left">Truck ID</th>
                 <th align="left">Plate</th>
                 <th align="left">Model</th>
                 <th align="left">Status</th>
+                <th align="left">Action</th>
             </tr>
+        </thead>
 
-            <tbody id="truckTable"></tbody>
+        <tbody id="truckTable">
+        </tbody>
 
-        </table>
+    </table>
 
-    </div>
+</div>
+```
 
 </div>
 
