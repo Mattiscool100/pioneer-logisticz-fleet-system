@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trips - Pioneer Logisticz</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+<div class="sidebar">
+    <h2>Pioneer Logisticz</h2>
+
+    <ul>
+        <li><a href="index.html">🏠 Dashboard</a></li>
+        <li><a href="trucks.html">🚚 Trucks</a></li>
+        <li><a href="drivers.html">👨‍✈️ Drivers</a></li>
+        <li><a href="trips.html">🗺️ Trips</a></li>
+    </ul>
+</div>
+
+<div class="main">
+
+    <h1>Trip Management</h1>
+
+    <div class="card" style="margin-top:20px;">
+        <h2>Create New Trip</h2>
+        <br>
+
+        <form>
+            <input type="text" placeholder="Origin" style="width:100%;padding:10px;margin-bottom:10px;">
+
+            <input type="text" placeholder="Destination" style="width:100%;padding:10px;margin-bottom:10px;">
+
+            <input type="text" placeholder="Assigned Truck" style="width:100%;padding:10px;margin-bottom:10px;">
+
+            <input type="text" placeholder="Driver" style="width:100%;padding:10px;margin-bottom:10px;">
+
+            <button type="submit" style="padding:10px 20px;">
+                Create Trip
+            </button>
+        </form>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+        <h2>Active Trips</h2>
+        <br>
+
+        <table width="100%">
+            <tr>
+                <th align="left">Truck</th>
+                <th align="left">Driver</th>
+                <th align="left">Route</th>
+                <th align="left">Status</th>
+            </tr>
+
+            <tr>
+                <td>PL-001</td>
+                <td>John Mwangi</td>
+                <td>Dar es Salaam → Dodoma</td>
+                <td>In Transit</td>
+            </tr>
+
+            <tr>
+                <td>PL-002</td>
+                <td>Peter Joseph</td>
+                <td>Dar es Salaam → Arusha</td>
+                <td>Loading</td>
+            </tr>
+
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
