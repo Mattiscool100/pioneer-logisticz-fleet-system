@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drivers - Pioneer Logisticz</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drivers - Pioneer Logisticz</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -23,50 +23,63 @@
 
     <h1>Driver Management</h1>
 
-    <div class="card" style="margin-top:20px;">
+    <div class="card">
+
         <h2>Add Driver</h2>
-        <br>
 
-        <form>
-            <input type="text" placeholder="Driver Name" style="width:100%;padding:10px;margin-bottom:10px;">
+        <form onsubmit="event.preventDefault(); addDriver();">
 
-            <input type="text" placeholder="Phone Number" style="width:100%;padding:10px;margin-bottom:10px;">
+            <input
+                id="driverName"
+                type="text"
+                placeholder="Driver Name"
+                style="width:100%;padding:10px;margin-bottom:10px;"
+            >
 
-            <input type="text" placeholder="License Number" style="width:100%;padding:10px;margin-bottom:10px;">
+            <input
+                id="driverPhone"
+                type="text"
+                placeholder="Phone Number"
+                style="width:100%;padding:10px;margin-bottom:10px;"
+            >
 
-            <button type="submit" style="padding:10px 20px;">
+            <input
+                id="driverLicense"
+                type="text"
+                placeholder="License Number"
+                style="width:100%;padding:10px;margin-bottom:10px;"
+            >
+
+            <button type="submit">
                 Add Driver
             </button>
+
         </form>
+
     </div>
 
     <div class="card" style="margin-top:20px;">
+
         <h2>Drivers List</h2>
-        <br>
 
         <table width="100%">
-            <tr>
-                <th align="left">Name</th>
-                <th align="left">Phone</th>
-                <th align="left">License</th>
-            </tr>
 
             <tr>
-                <td>John Mwangi</td>
-                <td>+255 700 123 456</td>
-                <td>DRV001</td>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>License</th>
+                <th>Action</th>
             </tr>
 
-            <tr>
-                <td>Peter Joseph</td>
-                <td>+255 700 987 654</td>
-                <td>DRV002</td>
-            </tr>
+            <tbody id="driverTable"></tbody>
 
         </table>
+
     </div>
 
 </div>
+
+<script src="js/app.js"></script>
 
 </body>
 </html>
