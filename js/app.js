@@ -5,33 +5,41 @@ let trucks = JSON.parse(localStorage.getItem("trucks")) || [];
 // Add Truck
 function addTruck() {
 
-    const truckId = document.getElementById("truckId").value;
-    const plate = document.getElementById("plate").value;
-    const model = document.getElementById("model").value;
-    const status = document.getElementById("status").value;
+    const truckId = document.getElementById("truckId");
+    const plate = document.getElementById("plate");
+    const model = document.getElementById("model");
+    const status = document.getElementById("status");
 
-    if (!truckId || !plate || !model) {
+    if (!truckId || !plate || !model || !status) return;
+
+    if (
+        truckId.value === "" ||
+        plate.value === "" ||
+        model.value === ""
+    ) {
         alert("Please fill in all fields.");
         return;
     }
 
-    const truck = {
-        truckId: truckId,
-        plate: plate,
-        model: model,
-        status: status
-    };
+    trucks.push({
+        truckId: truckId.value,
+        plate: plate.value,
+        model: model.value,
+        status: status.value
+    });
 
-    trucks.push(truck);
+    localStorage.setItem(
+        "trucks",
+        JSON.stringify(trucks)
+    );
 
-    localStorage.setItem("trucks", JSON.stringify(trucks));
-
-    document.getElementById("truckId").value = "";
-    document.getElementById("plate").value = "";
-    document.getElementById("model").value = "";
-    document.getElementById("status").value = "Available";
+    truckId.value = "";
+    plate.value = "";
+    model.value = "";
+    status.value = "Available";
 
     displayTrucks();
+    updateDashboard();
 }
 
 // Display Trucks
@@ -64,29 +72,28 @@ function displayTrucks() {
 // Delete Truck
 function deleteTruck(index) {
 
-    if (confirm("Delete this truck?")) {
+    trucks.splice(index, 1);
 
-        trucks.splice(index, 1);
+    localStorage.setItem(
+        "trucks",
+        JSON.stringify(trucks)
+    );
 
-        localStorage.setItem(
-            "trucks",
-            JSON.stringify(trucks)
-        );
-
-        displayTrucks();
-    }
+    displayTrucks();
+    updateDashboard();
 }
 
-// Dashboard Statistics
+// Dashboard Counter
 function updateDashboard() {
 
-    const totalTrucks = document.getElementById("totalTrucks");
+    const totalTrucks =
+        document.getElementById("totalTrucks");
 
     if (totalTrucks) {
         totalTrucks.textContent = trucks.length;
     }
 }
 
-// Load Data
+// Load Everything
 displayTrucks();
 updateDashboard();
