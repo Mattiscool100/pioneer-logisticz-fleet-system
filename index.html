@@ -3,86 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pioneer Logisticz Fleet Management</title>
-
+    <title>Pioneer Logisticz Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <div class="sidebar">
-        <h2>Pioneer Logisticz</h2>
+<div class="sidebar">
+    <h2>Pioneer Logisticz</h2>
 
-        <ul>
-            <li><a href="index.html">🏠 Dashboard</a></li>
-            <li><a href="trucks.html">🚚 Trucks</a></li>
-            <li><a href="drivers.html">👨‍✈️ Drivers</a></li>
-            <li><a href="trips.html">🗺️ Trips</a></li>
-        </ul>
-    </div>
+    <ul>
+        <li><a href="index.html">🏠 Dashboard</a></li>
+        <li><a href="trucks.html">🚚 Trucks</a></li>
+        <li><a href="drivers.html">👨‍✈️ Drivers</a></li>
+        <li><a href="trips.html">🗺️ Trips</a></li>
+    </ul>
+</div>
 
-    <div class="main">
+<div class="main">
 
-        <header>
-            <h1>Fleet Management Dashboard</h1>
-            <p>Welcome to Pioneer Logisticz Fleet Control Center</p>
-        </header>
+    <h1>Fleet Dashboard</h1>
 
-        <div class="cards">
+    <div class="cards">
 
-            <div class="card">
-                <h2>25</h2>
-                <p>Total Trucks</p>
-            </div>
-
-            <div class="card">
-                <h2>18</h2>
-                <p>Active Trips</p>
-            </div>
-
-            <div class="card">
-                <h2>32</h2>
-                <p>Drivers</p>
-            </div>
-
-            <div class="card">
-                <h2>4</h2>
-                <p>Maintenance Alerts</p>
-            </div>
-
+        <div class="card">
+            <h2 id="totalTrucks">0</h2>
+            <p>Total Trucks</p>
         </div>
 
-        <div class="card" style="margin-top:30px;">
-            <h2>Recent Activity</h2>
-            <br>
+        <div class="card">
+            <h2>0</h2>
+            <p>Total Drivers</p>
+        </div>
 
-            <table width="100%">
-                <tr>
-                    <th align="left">Truck</th>
-                    <th align="left">Status</th>
-                    <th align="left">Location</th>
-                </tr>
+        <div class="card">
+            <h2>0</h2>
+            <p>Active Trips</p>
+        </div>
 
-                <tr>
-                    <td>PL-001</td>
-                    <td>In Transit</td>
-                    <td>Dar es Salaam</td>
-                </tr>
-
-                <tr>
-                    <td>PL-002</td>
-                    <td>Available</td>
-                    <td>Depot</td>
-                </tr>
-
-                <tr>
-                    <td>PL-003</td>
-                    <td>Maintenance</td>
-                    <td>Workshop</td>
-                </tr>
-            </table>
+        <div class="card">
+            <h2>0</h2>
+            <p>Maintenance Alerts</p>
         </div>
 
     </div>
+
+    <div class="card" style="margin-top:20px;">
+        <h2>System Status</h2>
+        <p>Fleet Management System Running Successfully</p>
+    </div>
+
+</div>
+
+<script src="js/app.js"></script>
 
 </body>
 </html>
