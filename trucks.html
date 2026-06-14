@@ -21,20 +21,21 @@
 
 <div class="main">
 
-    <h1>Truck Fleet</h1>
+    <h1>Truck Fleet Management</h1>
 
     <div class="card" style="margin-top:20px;">
         <h2>Add New Truck</h2>
         <br>
 
-        <form>
-            <input type="text" placeholder="Truck ID" style="width:100%;padding:10px;margin-bottom:10px;">
+        <form onsubmit="event.preventDefault(); addTruck();">
 
-            <input type="text" placeholder="License Plate" style="width:100%;padding:10px;margin-bottom:10px;">
+            <input id="truckId" type="text" placeholder="Truck ID" style="width:100%;padding:10px;margin-bottom:10px;">
 
-            <input type="text" placeholder="Model" style="width:100%;padding:10px;margin-bottom:10px;">
+            <input id="plate" type="text" placeholder="License Plate" style="width:100%;padding:10px;margin-bottom:10px;">
 
-            <select style="width:100%;padding:10px;margin-bottom:10px;">
+            <input id="model" type="text" placeholder="Truck Model" style="width:100%;padding:10px;margin-bottom:10px;">
+
+            <select id="status" style="width:100%;padding:10px;margin-bottom:10px;">
                 <option>Available</option>
                 <option>In Transit</option>
                 <option>Maintenance</option>
@@ -43,14 +44,17 @@
             <button type="submit" style="padding:10px 20px;">
                 Add Truck
             </button>
+
         </form>
     </div>
 
     <div class="card" style="margin-top:20px;">
-        <h2>Current Fleet</h2>
+
+        <h2>Fleet Trucks</h2>
         <br>
 
         <table width="100%">
+
             <tr>
                 <th align="left">Truck ID</th>
                 <th align="left">Plate</th>
@@ -58,31 +62,15 @@
                 <th align="left">Status</th>
             </tr>
 
-            <tr>
-                <td>PL-001</td>
-                <td>T123 ABC</td>
-                <td>Volvo FH16</td>
-                <td>Available</td>
-            </tr>
+            <tbody id="truckTable"></tbody>
 
-            <tr>
-                <td>PL-002</td>
-                <td>T456 XYZ</td>
-                <td>Scania R500</td>
-                <td>In Transit</td>
-            </tr>
-
-            <tr>
-                <td>PL-003</td>
-                <td>T789 DEF</td>
-                <td>Mercedes Actros</td>
-                <td>Maintenance</td>
-            </tr>
         </table>
 
     </div>
 
 </div>
+
+<script src="js/app.js"></script>
 
 </body>
 </html>
