@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trips - Pioneer Logisticz</title>
+    <title>Trip Management - Pioneer Logisticz</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,67 +12,150 @@
 <div class="sidebar">
     <h2>Pioneer Logisticz</h2>
 
-    <ul>
-        <li><a href="index.html">🏠 Dashboard</a></li>
-        <li><a href="trucks.html">🚚 Trucks</a></li>
-        <li><a href="drivers.html">👨‍✈️ Drivers</a></li>
-        <li><a href="trips.html">🗺️ Trips</a></li>
-    </ul>
+```
+<ul>
+    <li><a href="index.html">🏠 Dashboard</a></li>
+    <li><a href="trucks.html">🚚 Trucks</a></li>
+    <li><a href="drivers.html">👨‍✈️ Drivers</a></li>
+    <li><a href="trips.html">🗺️ Trips</a></li>
+</ul>
+```
+
 </div>
 
 <div class="main">
 
-    <h1>Trip Management</h1>
+```
+<h1>🗺️ Trip Management Center</h1>
 
-    <div class="card" style="margin-top:20px;">
-        <h2>Create New Trip</h2>
-        <br>
+<div class="card" style="margin-top:20px;">
 
-        <form>
-            <input type="text" placeholder="Origin" style="width:100%;padding:10px;margin-bottom:10px;">
+    <h2>Create New Trip</h2>
+    <br>
 
-            <input type="text" placeholder="Destination" style="width:100%;padding:10px;margin-bottom:10px;">
+    <form>
 
-            <input type="text" placeholder="Assigned Truck" style="width:100%;padding:10px;margin-bottom:10px;">
+        <input
+            type="text"
+            placeholder="Trip ID (TR-001)"
+            style="width:100%;padding:12px;margin-bottom:10px;"
+        >
 
-            <input type="text" placeholder="Driver" style="width:100%;padding:10px;margin-bottom:10px;">
+        <input
+            type="text"
+            placeholder="Origin"
+            style="width:100%;padding:12px;margin-bottom:10px;"
+        >
 
-            <button type="submit" style="padding:10px 20px;">
-                Create Trip
-            </button>
-        </form>
-    </div>
+        <input
+            type="text"
+            placeholder="Destination"
+            style="width:100%;padding:12px;margin-bottom:10px;"
+        >
 
-    <div class="card" style="margin-top:20px;">
-        <h2>Active Trips</h2>
-        <br>
+        <input
+            type="text"
+            placeholder="Assigned Truck ID"
+            style="width:100%;padding:12px;margin-bottom:10px;"
+        >
 
-        <table width="100%">
+        <input
+            type="text"
+            placeholder="Assigned Driver"
+            style="width:100%;padding:12px;margin-bottom:10px;"
+        >
+
+        <input
+            type="text"
+            placeholder="Cargo Description"
+            style="width:100%;padding:12px;margin-bottom:10px;"
+        >
+
+        <input
+            type="date"
+            style="width:100%;padding:12px;margin-bottom:10px;"
+        >
+
+        <select
+            style="width:100%;padding:12px;margin-bottom:10px;"
+        >
+            <option>Scheduled</option>
+            <option>Loading</option>
+            <option>In Transit</option>
+            <option>Delivered</option>
+            <option>Cancelled</option>
+        </select>
+
+        <button
+            type="submit"
+            style="padding:12px 20px;"
+        >
+            Create Trip
+        </button>
+
+    </form>
+
+</div>
+
+<div class="card" style="margin-top:20px;">
+
+    <h2>Active Trips</h2>
+    <br>
+
+    <table width="100%" cellpadding="10">
+
+        <thead>
             <tr>
+                <th align="left">Trip ID</th>
                 <th align="left">Truck</th>
                 <th align="left">Driver</th>
                 <th align="left">Route</th>
+                <th align="left">Cargo</th>
                 <th align="left">Status</th>
             </tr>
+        </thead>
+
+        <tbody>
 
             <tr>
+                <td>TR-001</td>
                 <td>PL-001</td>
                 <td>John Mwangi</td>
                 <td>Dar es Salaam → Dodoma</td>
+                <td>Construction Materials</td>
                 <td>In Transit</td>
             </tr>
 
             <tr>
+                <td>TR-002</td>
                 <td>PL-002</td>
                 <td>Peter Joseph</td>
                 <td>Dar es Salaam → Arusha</td>
+                <td>Food Products</td>
                 <td>Loading</td>
             </tr>
 
-        </table>
-    </div>
+        </tbody>
+
+    </table>
 
 </div>
+
+<div class="card" style="margin-top:20px;">
+
+    <h2>Trip Performance Overview</h2>
+
+    <p>Total Trips: 2</p>
+    <p>Trips In Transit: 1</p>
+    <p>Trips Loading: 1</p>
+    <p>Trips Delivered: 0</p>
+
+</div>
+```
+
+</div>
+
+<script src="js/app.js"></script>
 
 </body>
 </html>
