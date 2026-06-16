@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Pioneer Logisticz</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Pioneer Logisticz</h2>
+    <ul>
+        <li><a href="index.html">🏠 Dashboard</a></li>
+        <li><a href="trucks.html">🚚 Trucks</a></li>
+        <li><a href="drivers.html">👨‍✈️ Drivers</a></li>
+        <li><a href="trips.html">🗺️ Trips</a></li>
+        <li><a href="maintenance.html">🔧 Maintenance</a></li>
+        <li><a href="fuel.html">⛽ Fuel</a></li>
+        <li><a href="reports.html">📊 Reports</a></li>
+    </ul>
+
+    <div id="userProfile" style="margin-top: 40px; padding-top: 20px; border-top: 2px solid rgba(255, 255, 255, 0.3);">
+        <div id="userInfo" style="margin-bottom: 15px;">
+            <p style="font-size: 12px; color: rgba(255, 255, 255, 0.7); margin-bottom: 5px;">Logged in as:</p>
+            <p id="userName" style="color: white; font-weight: 600;">User</p>
+            <p id="userRole" style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">Role: User</p>
+        </div>
+        <button onclick="logout()" style="width: 100%; padding: 10px; background-color: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.3)'" onmouseout="this.style.backgroundColor='rgba(255, 255, 255, 0.2)'">🚪 Logout</button>
+    </div>
+</div>
+
+<div class="main">
+    <h1>📊 Fleet Reports</h1>
+
+    <div class="card" style="margin-top:20px;">
+        <h2>Fleet Statistics</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+            <div style="padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                <p style="color: #666; font-size: 14px;">Total Trucks</p>
+                <h3 id="reportTotalTrucks" style="color: #667eea; font-size: 28px; margin: 10px 0;">0</h3>
+            </div>
+            <div style="padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                <p style="color: #666; font-size: 14px;">Total Drivers</p>
+                <h3 id="reportTotalDrivers" style="color: #667eea; font-size: 28px; margin: 10px 0;">0</h3>
+            </div>
+            <div style="padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                <p style="color: #666; font-size: 14px;">Total Trips</p>
+                <h3 id="reportTotalTrips" style="color: #667eea; font-size: 28px; margin: 10px 0;">0</h3>
+            </div>
+            <div style="padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                <p style="color: #666; font-size: 14px;">Total Maintenance</p>
+                <h3 id="reportTotalMaintenance" style="color: #e74c3c; font-size: 28px; margin: 10px 0;">0</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+        <h2>Trip Statistics</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 20px;">
+            <div style="padding: 15px; background: #d4edda; border-radius: 8px;">
+                <p style="color: #155724; font-size: 14px;">Delivered</p>
+                <h3 id="reportTripsDelivered" style="color: #27ae60; font-size: 24px; margin: 10px 0;">0</h3>
+            </div>
+            <div style="padding: 15px; background: #fff3cd; border-radius: 8px;">
+                <p style="color: #856404; font-size: 14px;">In Transit</p>
+                <h3 id="reportTripsInTransit" style="color: #f39c12; font-size: 24px; margin: 10px 0;">0</h3>
+            </div>
+            <div style="padding: 15px; background: #d1ecf1; border-radius: 8px;">
+                <p style="color: #0c5460; font-size: 14px;">Scheduled</p>
+                <h3 id="reportTripsScheduled" style="color: #3498db; font-size: 24px; margin: 10px 0;">0</h3>
+            </div>
+            <div style="padding: 15px; background: #f8d7da; border-radius: 8px;">
+                <p style="color: #721c24; font-size: 14px;">Cancelled</p>
+                <h3 id="reportTripsCancelled" style="color: #e74c3c; font-size: 24px; margin: 10px 0;">0</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+        <h2>Fuel Expenses</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+            <div style="padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                <p style="color: #666; font-size: 14px;">Total Fuel Purchased</p>
+                <h3 id="reportTotalFuelLiters" style="color: #667eea; font-size: 28px; margin: 10px 0;">0 L</h3>
+            </div>
+            <div style="padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                <p style="color: #666; font-size: 14px;">Total Fuel Cost</p>
+                <h3 id="reportTotalFuelCost" style="color: #e74c3c; font-size: 28px; margin: 10px 0;">0 TZS</h3>
+            </div>
+            <div style="padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                <p style="color: #666; font-size: 14px;">Average Cost/Liter</p>
+                <h3 id="reportAvgFuelCost" style="color: #27ae60; font-size: 28px; margin: 10px 0;">0 TZS</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+        <h2>Maintenance Costs</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+            <div style="padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                <p style="color: #666; font-size: 14px;">Total Maintenance Records</p>
+                <h3 id="reportMaintenanceCount" style="color: #667eea; font-size: 28px; margin: 10px 0;">0</h3>
+            </div>
+            <div style="padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                <p style="color: #666; font-size: 14px;">Total Maintenance Cost</p>
+                <h3 id="reportMaintenanceCost" style="color: #e74c3c; font-size: 28px; margin: 10px 0;">0 TZS</h3>
+            </div>
+            <div style="padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                <p style="color: #666; font-size: 14px;">Scheduled Maintenance</p>
+                <h3 id="reportScheduledMaintenance" style="color: #f39c12; font-size: 28px; margin: 10px 0;">0</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+        <button onclick="exportToCSV()" style="padding:12px 24px;background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);color: white;border: none;border-radius: 8px;font-size: 14px;font-weight: 600;cursor: pointer;margin-right: 10px;">
+            📥 Export to CSV
+        </button>
+        <button onclick="printReport()" style="padding:12px 24px;background: linear-gradient(135deg, #27ae60 0%, #229954 100%);color: white;border: none;border-radius: 8px;font-size: 14px;font-weight: 600;cursor: pointer;">
+            🖨️ Print Report
+        </button>
+    </div>
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/reports.js"></script>
+<script>
+    if (!checkAuth()) return;
+    
+    function displayUserInfo() {
+        const user = getCurrentUser();
+        if (user) {
+            document.getElementById('userName').textContent = user.name;
+            document.getElementById('userRole').textContent = 'Role: ' + user.role.charAt(0).toUpperCase() + user.role.slice(1);
+        }
+    }
+    
+    displayUserInfo();
+    generateReports();
+</script>
+
+</body>
+</html>
