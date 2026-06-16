@@ -16,7 +16,18 @@
         <li><a href="trucks.html">🚚 Trucks</a></li>
         <li><a href="drivers.html">👨‍✈️ Drivers</a></li>
         <li><a href="trips.html">🗺️ Trips</a></li>
+        <li><a href="maintenance.html">🔧 Maintenance</a></li>
+        <li><a href="fuel.html">⛽ Fuel</a></li>
     </ul>
+
+    <div id="userProfile" style="margin-top: 40px; padding-top: 20px; border-top: 2px solid rgba(255, 255, 255, 0.3);">
+        <div id="userInfo" style="margin-bottom: 15px;">
+            <p style="font-size: 12px; color: rgba(255, 255, 255, 0.7); margin-bottom: 5px;">Logged in as:</p>
+            <p id="userName" style="color: white; font-weight: 600;">User</p>
+            <p id="userRole" style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">Role: User</p>
+        </div>
+        <button onclick="logout()" style="width: 100%; padding: 10px; background-color: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.3)'" onmouseout="this.style.backgroundColor='rgba(255, 255, 255, 0.2)'">🚪 Logout</button>
+    </div>
 </div>
 
 <div class="main">
@@ -31,17 +42,17 @@
         </div>
 
         <div class="card">
-            <h2>0</h2>
+            <h2 id="totalDrivers">0</h2>
             <p>Total Drivers</p>
         </div>
 
         <div class="card">
-            <h2>0</h2>
+            <h2 id="activeTrips">0</h2>
             <p>Active Trips</p>
         </div>
 
         <div class="card">
-            <h2>0</h2>
+            <h2 id="maintenanceAlerts">0</h2>
             <p>Maintenance Alerts</p>
         </div>
 
@@ -49,12 +60,78 @@
 
     <div class="card" style="margin-top:20px;">
         <h2>System Status</h2>
-        <p>Fleet Management System Running Successfully</p>
+        <p>✅ Fleet Management System Running Successfully</p>
+        <p style="margin-top: 15px; color: #666; font-size: 14px;">Last updated: <span id="lastUpdated"></span></p>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+        <h2>Quick Stats</h2>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 15px;">
+            <div>
+                <p style="color: #666; font-size: 14px;">Trucks In Transit</p>
+                <h3 id="trucksInTransit" style="color: #667eea; font-size: 24px;">0</h3>
+            </div>
+            <div>
+                <p style="color: #666; font-size: 14px;">Trucks Under Maintenance</p>
+                <h3 id="trucksUnderMaintenance" style="color: #e74c3c; font-size: 24px;">0</h3>
+            </div>
+            <div>
+                <p style="color: #666; font-size: 14px;">Trips Delivered</p>
+                <h3 id="tripsDelivered" style="color: #27ae60; font-size: 24px;">0</h3>
+            </div>
+            <div>
+                <p style="color: #666; font-size: 14px;">Scheduled Maintenance</p>
+                <h3 id="scheduledMaintenance" style="color: #f39c12; font-size: 24px;">0</h3>
+            </div>
+        </div>
     </div>
 
 </div>
 
+<script src="js/auth.js"></script>
 <script src="js/app.js"></script>
+<script>
+    // Check authentication
+    if (!checkAuth()) return;
+
+    // Display user info
+    function displayUserInfo() {
+        const user = getCurrentUser();
+        if (user) {
+            document.getElementById('userName').textContent = user.name;
+            document.getElementById('userRole').textContent = 'Role: ' + user.role.charAt(0).toUpperCase() + user.role.slice(1);
+        }
+    }
+
+    // Update dashboard with more stats
+    function updateAdvancedDashboard() {
+        const storage = {
+            trucks: JSON.parse(localStorage.getItem('trucks')) || [],
+            drivers: JSON.parse(localStorage.getItem('drivers')) || [],
+            trips: JSON.parse(localStorage.getItem('trips')) || [],
+            maintenance: JSON.parse(localStorage.getItem('maintenance')) || [],
+            fuel: JSON.parse(localStorage.getItem('fuel')) || []
+        };
+
+        document.getElementById('totalTrucks').textContent = storage.trucks.length;
+        document.getElementById('totalDrivers').textContent = storage.drivers.length;
+        document.getElementById('activeTrips').textContent = storage.trips.filter(t => t.tripStatus === 'In Transit' || t.tripStatus === 'Loading').length;
+        document.getElementById('maintenanceAlerts').textContent = storage.maintenance.filter(m => m.status === 'Scheduled').length;
+        
+        document.getElementById('trucksInTransit').textContent = storage.trucks.filter(t => t.status === 'In Transit').length;
+        document.getElementById('trucksUnderMaintenance').textContent = storage.trucks.filter(t => t.status === 'Maintenance').length;
+        document.getElementById('tripsDelivered').textContent = storage.trips.filter(t => t.tripStatus === 'Delivered').length;
+        document.getElementById('scheduledMaintenance').textContent = storage.maintenance.filter(m => m.status === 'Scheduled').length;
+        
+        document.getElementById('lastUpdated').textContent = new Date().toLocaleTimeString();
+    }
+
+    displayUserInfo();
+    updateAdvancedDashboard();
+
+    // Update stats every 5 seconds
+    setInterval(updateAdvancedDashboard, 5000);
+</script>
 
 </body>
 </html>
