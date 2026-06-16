@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,94 +10,84 @@
 
 <div class="sidebar">
     <h2>Pioneer Logisticz</h2>
-
-```
-<ul>
-    <li><a href="index.html">🏠 Dashboard</a></li>
-    <li><a href="trucks.html">🚚 Trucks</a></li>
-    <li><a href="drivers.html">👨‍✈️ Drivers</a></li>
-    <li><a href="trips.html">🗺️ Trips</a></li>
-</ul>
-```
-
+    <ul>
+        <li><a href="index.html">🏠 Dashboard</a></li>
+        <li><a href="trucks.html">🚚 Trucks</a></li>
+        <li><a href="drivers.html">👨‍✈️ Drivers</a></li>
+        <li><a href="trips.html">🗺️ Trips</a></li>
+        <li><a href="maintenance.html">🔧 Maintenance</a></li>
+        <li><a href="fuel.html">⛽ Fuel</a></li>
+    </ul>
 </div>
 
 <div class="main">
+    <h1>🚚 Truck Fleet Management</h1>
 
-```
-<h1>🚚 Truck Fleet Management</h1>
+    <div class="card" style="margin-top:20px;">
+        <h2>Add New Truck</h2>
+        <br>
 
-<div class="card" style="margin-top:20px;">
-    <h2>Add New Truck</h2>
-    <br>
+        <form onsubmit="event.preventDefault(); addTruck();">
+            <input
+                id="truckId"
+                type="text"
+                placeholder="Truck ID (PL-001)"
+                style="width:100%;padding:12px;margin-bottom:10px;"
+                required
+            >
 
-    <form onsubmit="event.preventDefault(); addTruck();">
+            <input
+                id="plate"
+                type="text"
+                placeholder="License Plate"
+                style="width:100%;padding:12px;margin-bottom:10px;"
+                required
+            >
 
-        <input
-            id="truckId"
-            type="text"
-            placeholder="Truck ID (PL-001)"
-            style="width:100%;padding:12px;margin-bottom:10px;"
-        >
+            <input
+                id="model"
+                type="text"
+                placeholder="Truck Model"
+                style="width:100%;padding:12px;margin-bottom:10px;"
+                required
+            >
 
-        <input
-            id="plate"
-            type="text"
-            placeholder="License Plate"
-            style="width:100%;padding:12px;margin-bottom:10px;"
-        >
+            <select
+                id="status"
+                style="width:100%;padding:12px;margin-bottom:10px;"
+            >
+                <option>Available</option>
+                <option>In Transit</option>
+                <option>Maintenance</option>
+            </select>
 
-        <input
-            id="model"
-            type="text"
-            placeholder="Truck Model"
-            style="width:100%;padding:12px;margin-bottom:10px;"
-        >
+            <button
+                type="submit"
+                style="padding:12px 20px;cursor:pointer;"
+            >
+                Add Truck
+            </button>
+        </form>
+    </div>
 
-        <select
-            id="status"
-            style="width:100%;padding:12px;margin-bottom:10px;"
-        >
-            <option>Available</option>
-            <option>In Transit</option>
-            <option>Maintenance</option>
-        </select>
+    <div class="card" style="margin-top:20px;">
+        <h2>Fleet Trucks</h2>
+        <br>
 
-        <button
-            type="submit"
-            style="padding:12px 20px;cursor:pointer;"
-        >
-            Add Truck
-        </button>
-
-    </form>
-</div>
-
-<div class="card" style="margin-top:20px;">
-
-    <h2>Fleet Trucks</h2>
-    <br>
-
-    <table width="100%" cellpadding="10">
-
-        <thead>
-            <tr>
-                <th align="left">Truck ID</th>
-                <th align="left">Plate</th>
-                <th align="left">Model</th>
-                <th align="left">Status</th>
-                <th align="left">Action</th>
-            </tr>
-        </thead>
-
-        <tbody id="truckTable">
-        </tbody>
-
-    </table>
-
-</div>
-```
-
+        <table width="100%" cellpadding="10">
+            <thead>
+                <tr>
+                    <th align="left">Truck ID</th>
+                    <th align="left">Plate</th>
+                    <th align="left">Model</th>
+                    <th align="left">Status</th>
+                    <th align="left">Action</th>
+                </tr>
+            </thead>
+            <tbody id="truckTable">
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script src="js/app.js"></script>
