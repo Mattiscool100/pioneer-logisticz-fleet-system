@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,112 +10,105 @@
 
 <div class="sidebar">
     <h2>Pioneer Logisticz</h2>
-
-```
-<ul>
-    <li><a href="index.html">🏠 Dashboard</a></li>
-    <li><a href="trucks.html">🚚 Trucks</a></li>
-    <li><a href="drivers.html">👨‍✈️ Drivers</a></li>
-    <li><a href="trips.html">🗺️ Trips</a></li>
-    <li><a href="maintenance.html">🔧 Maintenance</a></li>
-</ul>
-```
-
+    <ul>
+        <li><a href="index.html">🏠 Dashboard</a></li>
+        <li><a href="trucks.html">🚚 Trucks</a></li>
+        <li><a href="drivers.html">👨‍✈️ Drivers</a></li>
+        <li><a href="trips.html">🗺️ Trips</a></li>
+        <li><a href="maintenance.html">🔧 Maintenance</a></li>
+        <li><a href="fuel.html">⛽ Fuel</a></li>
+    </ul>
 </div>
 
 <div class="main">
+    <h1>🔧 Maintenance Management</h1>
 
-```
-<h1>🔧 Maintenance Management</h1>
+    <div class="card" style="margin-top:20px;">
+        <h2>Schedule Maintenance</h2>
+        <br>
 
-<div class="card" style="margin-top:20px;">
+        <form onsubmit="event.preventDefault(); scheduleMaintenance();">
+            <input
+                id="maintenanceTruckId"
+                type="text"
+                placeholder="Truck ID"
+                style="width:100%;padding:12px;margin-bottom:10px;"
+                required
+            >
 
-    <h2>Schedule Maintenance</h2>
-    <br>
+            <select
+                id="maintenanceType"
+                style="width:100%;padding:12px;margin-bottom:10px;"
+            >
+                <option>Oil Change</option>
+                <option>Tire Replacement</option>
+                <option>Brake Service</option>
+                <option>Engine Repair</option>
+                <option>General Inspection</option>
+            </select>
 
-    <form>
+            <input
+                id="maintenanceDate"
+                type="date"
+                style="width:100%;padding:12px;margin-bottom:10px;"
+                required
+            >
 
-        <input
-            type="text"
-            placeholder="Truck ID"
-            style="width:100%;padding:12px;margin-bottom:10px;"
-        >
+            <input
+                id="estimatedCost"
+                type="number"
+                placeholder="Estimated Cost (TZS)"
+                style="width:100%;padding:12px;margin-bottom:10px;"
+                required
+            >
 
-        <select
-            style="width:100%;padding:12px;margin-bottom:10px;"
-        >
-            <option>Oil Change</option>
-            <option>Tire Replacement</option>
-            <option>Brake Service</option>
-            <option>Engine Repair</option>
-            <option>General Inspection</option>
-        </select>
+            <textarea
+                id="maintenanceNotes"
+                placeholder="Maintenance Notes"
+                style="width:100%;padding:12px;margin-bottom:10px;height:120px;"
+            ></textarea>
 
-        <input
-            type="date"
-            style="width:100%;padding:12px;margin-bottom:10px;"
-        >
+            <button type="submit">
+                Schedule Maintenance
+            </button>
+        </form>
+    </div>
 
-        <input
-            type="number"
-            placeholder="Estimated Cost (TZS)"
-            style="width:100%;padding:12px;margin-bottom:10px;"
-        >
+    <div class="card" style="margin-top:20px;">
+        <h2>Maintenance Records</h2>
 
-        <textarea
-            placeholder="Maintenance Notes"
-            style="width:100%;padding:12px;margin-bottom:10px;height:120px;"
-        ></textarea>
+        <table width="100%" cellpadding="10">
+            <thead>
+                <tr>
+                    <th align="left">Truck</th>
+                    <th align="left">Service</th>
+                    <th align="left">Date</th>
+                    <th align="left">Cost</th>
+                    <th align="left">Status</th>
+                    <th align="left">Action</th>
+                </tr>
+            </thead>
+            <tbody id="maintenanceTable">
+                <tr>
+                    <td>PL-001</td>
+                    <td>Oil Change</td>
+                    <td>15/06/2026</td>
+                    <td>150,000 TZS</td>
+                    <td>Completed</td>
+                    <td><button onclick="deleteMaintenance('PL-001')">Delete</button></td>
+                </tr>
 
-        <button type="submit">
-            Schedule Maintenance
-        </button>
-
-    </form>
-
-</div>
-
-<div class="card" style="margin-top:20px;">
-
-    <h2>Maintenance Records</h2>
-
-    <table width="100%" cellpadding="10">
-
-        <thead>
-            <tr>
-                <th align="left">Truck</th>
-                <th align="left">Service</th>
-                <th align="left">Date</th>
-                <th align="left">Cost</th>
-                <th align="left">Status</th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-            <tr>
-                <td>PL-001</td>
-                <td>Oil Change</td>
-                <td>15/06/2026</td>
-                <td>150,000 TZS</td>
-                <td>Completed</td>
-            </tr>
-
-            <tr>
-                <td>PL-002</td>
-                <td>Brake Service</td>
-                <td>20/06/2026</td>
-                <td>400,000 TZS</td>
-                <td>Scheduled</td>
-            </tr>
-
-        </tbody>
-
-    </table>
-
-</div>
-```
-
+                <tr>
+                    <td>PL-002</td>
+                    <td>Brake Service</td>
+                    <td>20/06/2026</td>
+                    <td>400,000 TZS</td>
+                    <td>Scheduled</td>
+                    <td><button onclick="deleteMaintenance('PL-002')">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script src="js/app.js"></script>
